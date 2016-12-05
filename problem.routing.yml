@@ -1,0 +1,7 @@
+problem.form:
+  path: '/problem'
+  defaults:
+    _controller: '\Drupal\problem\Controller\PageForms::pageOutput'
+    _title: 'Problem Example'
+  requirements:
+    _permission: 'access content'
