@@ -23,9 +23,10 @@ class GetContactForm {
     $message = \Drupal::entityManager()
       ->getStorage('contact_message')
       ->create(['contact_form' => $entity->id()]);
+    return $message;
 
-    $form = \Drupal::service('entity.form_builder')->getForm($message);
-    $form['actions']['submit']['#value'] = $button;
+    //$form = \Drupal::service('entity.form_builder')->getForm($message);
+    //$form['actions']['submit']['#value'] = $button;
 
     return $form;
   }

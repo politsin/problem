@@ -37,10 +37,17 @@ class PageForms extends ControllerBase {
       $extra['i'] = $i;
       $output['form-' . $i] = \Drupal::formBuilder()->getForm('Drupal\problem\Form\MultiForm', $extra);
     }
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < 6; $i++) {
       $extra['i'] = $i;
-      $output['contact-' . $i] = GetContactForm::form($form_name = 'callback');
+      //$output['contact-' . $i] = GetContactForm::form($form_name = 'callback');
+      $message = GetContactForm::form($form_name = 'callback');
+      $output['contact-' . $i] = \Drupal::service('entity.form_builder')->getForm($message);
+      $output['contact-' . $i]['field_skrytoe_pole']['widget'][0]['value']['#value'] = 'contact-form-' . $i;
+      if (true) {
+        $output['contact-' . $i]['#prefix'] = '<div id="contact-form-' . $i . '">';
+      }
     }
+    dsm($output);
     $output['br'] = ['#markup' => '<br><br><br><br>'];
     return $output;
   }
